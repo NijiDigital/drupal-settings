@@ -1,0 +1,10 @@
+cache_maxage: '300'
+css_preprocess: 'TRUE'
+db_host: 'mariadb'
+db_name: 'drupal'
+db_pass: 'drupal'
+db_user: 'drupal'
+error_level: 'verbose'
+js_preprocess: 'TRUE'
+trusted_host_patterns:
+  - '^drupal\.localhost$'

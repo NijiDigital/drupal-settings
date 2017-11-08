@@ -1,0 +1,33 @@
+{% autoescape false %}
+<?php
+
+//$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
+//$settings['cache']['default'] = 'cache.backend.null';
+$settings['extension_discovery_scan_tests'] = TRUE;
+$settings['file_chmod_directory'] = 0775;
+$settings['file_chmod_file'] = 0664;
+$settings['hash_salt'] = '{{ hash_salt }}';
+
+$databases['default']['default'] = array(
+    'driver' => 'mysql',
+    'database' => '{{ db_name }}',
+    'username' => '{{ db_user }}',
+    'password' => '{{ db_pass }}',
+    'host' => '{{ db_host }}',
+    'port' => 3306,
+    'prefix' => '',
+    'collation' => 'utf8mb4_general_ci',
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+);
+
+$config['system.logging']['error_level'] = '{{ error_level }}';
+$config['system.performance']['css']['preprocess'] = {{ css_preprocess }};
+$config['system.performance']['js']['preprocess'] = {{ js_preprocess }};
+$config['system.performance']['cache.page.max_age'] = {{ cache_maxage }};
+
+$settings['trusted_host_patterns'] = {{ trusted_host_patterns }};
+
+$config_directories = array(
+    CONFIG_SYNC_DIRECTORY => getcwd() . '/../config/'
+);
+{% endautoescape %}

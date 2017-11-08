@@ -1,0 +1,30 @@
+{
+    "name": "niji-digital/drupal-settings",
+    "description": "Composer Plugin for generate the Drupal settings file.",
+    "type": "composer-plugin",
+    "license": "GPL-2.0+",
+    "autoload": {
+        "psr-4": {
+            "NijiDigital\\Settings\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "extra": {
+        "class": "NijiDigital\\Settings\\Plugin"
+    },
+    "require": {
+        "composer-plugin-api": "^1.0.0",
+        "drupal/core": "~8.4",
+        "php": ">=5.4.5",
+        "twig/twig": "^1.23.1"
+    },
+    "require-dev": {
+        "composer/composer": "dev-master",
+        "phpunit/phpunit": "^4.4.0"
+    }
+}
