@@ -137,7 +137,7 @@ class SettingsGenerator {
      */
     protected function getTemplatePath() {
         if (isset($this->extra['template-directory'])) {
-            return getcwd() . '/drupal-settings/' . $this->extra['template-directory'];
+            return getcwd() . '/' . $this->extra['template-directory'];
         }
         return $this->composer->getConfig()->get('vendor-dir') . '/niji-digital/drupal-settings/templates/';
     }

@@ -69,7 +69,7 @@ You can make your own template and add his definition in the composer extra data
 {
     "extra": {
         "settings-generator": {
-            "template-directory": "templates",
+            "template-directory": "path/to/templates",
             "template-file": "settings.local.php.twig"
         }
     }
