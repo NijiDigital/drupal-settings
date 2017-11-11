@@ -4,7 +4,7 @@ Composer plugin for generate the Drupal `settings.local.php` (or other) file fro
 
 ## Usage
 
-* Run `composer require niji-digital/niji-digital/drupal-settings`
+* Run `composer require niji-digital/drupal-settings`
 * Add new script to the scripts section of your composer.json:
 ```json
 {
