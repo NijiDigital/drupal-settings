@@ -110,7 +110,7 @@ This plugin tried to load parameter file (in order):
 
 By default the `settings.local.php` file is created in the `web/sites/default` directory.
 
-The destination can be overwritten by a setting in composer extra data definition.
+The destination can be overwritten in composer extra data definition.
 
 ```json
 {
