@@ -42,6 +42,8 @@ class SettingsGenerator {
      */
     protected $twigEnvironment;
 
+    protected $basePath;
+
     /**
      * Handler constructor.
      *
@@ -54,6 +56,7 @@ class SettingsGenerator {
         $this->event = $event;
         $this->setExtra($composer);
         $this->twigEnvironment = new Twig_Environment(new Twig_Loader_Filesystem($this->getTemplatePath()));
+        $this->basePath = getcwd() . '/';
     }
 
     /**
@@ -137,7 +140,7 @@ class SettingsGenerator {
      */
     protected function getTemplatePath() {
         if (isset($this->extra['template-directory'])) {
-            return getcwd() . '/' . $this->extra['template-directory'];
+            return $this->basePath . $this->extra['template-directory'];
         }
         return $this->composer->getConfig()->get('vendor-dir') . '/niji-digital/drupal-settings/templates/';
     }
@@ -164,7 +167,7 @@ class SettingsGenerator {
         if (isset($this->extra['destination-directory'])) {
             $destination_path = $this->extra['destination-directory'];
         }
-        return getcwd() . '/' . $destination_path;
+        return $this->basePath . $destination_path;
     }
 
     /**
@@ -207,8 +210,8 @@ class SettingsGenerator {
     protected function getParameterFiles() {
         // By default.
         $parameter_files = [
-            '/drupal-settings/parameters.yml',
-            '/drupal-settings/parameters.dist.yml'
+            'drupal-settings/parameters.yml',
+            'drupal-settings/parameters.dist.yml'
         ];
 
         if ($this->extra && isset($this->extra['parameters-file'])) {
@@ -226,9 +229,9 @@ class SettingsGenerator {
     protected function getParameterFileContent() {
         $files = $this->getParameterFiles();
         foreach ($files as $parameter_file) {
-            if (file_exists(getcwd() . $parameter_file)) {
+            if (file_exists($this->basePath . $parameter_file)) {
                 $this->event->getIO()->write("Create the settings file from the $parameter_file file");
-                return file_get_contents(getcwd() . $parameter_file);
+                return file_get_contents($this->basePath . $parameter_file);
             }
             else {
                 $this->event->getIO()->write("Parameter file $parameter_file doesn't exists" . (($next = next($files)) ? ', trying with ' . $next : ''));
