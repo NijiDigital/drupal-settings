@@ -68,7 +68,7 @@ You can make your own template and add his definition in the composer extra data
 ```json
 {
     "extra": {
-        "settings-generator": {
+        "drupal-settings": {
             "template-directory": "path/to/templates",
             "template-file": "settings.local.php.twig"
         }
@@ -97,7 +97,7 @@ This plugin tried to load parameter file (in order):
 ```json
 {
     "extra": {
-        "settings-generator": {
+        "drupal-settings": {
             "parameters-file": "../path/to/parameters.yml"
         }
     }
@@ -115,7 +115,7 @@ The destination can be overwritten in composer extra data definition.
 ```json
 {
     "extra": {
-        "settings-generator": {
+        "drupal-settings": {
             "destination-directory": "web/sites/default",
             "destination-file": "settings.local.php"
         }
